@@ -1,32 +1,28 @@
 <template>
-  <div>
-    <InputText v-model="text" />
-    <Button label="Greet" icon="pi pi-user" @click="greet"></Button>
-    <Toast />
-  </div>
+  <question-container v-for="question in questions" :key="question">
+    <question-header :description="question" />
+  </question-container>
 </template>
 
 <script>
-import { defineComponent, ref } from "@vue/runtime-core";
-import { useToast } from "primevue/usetoast";
+import { defineComponent } from "@vue/runtime-core";
+import QuestionContainer from "./components/QuestionContainer.vue";
+import QuestionHeader from "./components/QuestionHeader.vue";
 
 export default defineComponent({
+  components: {
+    "question-header": QuestionHeader,
+    "question-container": QuestionContainer,
+  },
   setup() {
-    const toast = useToast();
-    const text = ref("Prime");
-
-    const greet = () => {
-      console.log("greeting!");
-      toast.add({
-        severity: "info",
-        summary: "hello",
-        detail: text,
-      });
-    };
+    const questions = [
+      "What is the reason for redesigning your space ?",
+      "How do you want to use your home office ?",
+      "Which room would you like to get designed ?",
+    ];
 
     return {
-      text,
-      greet,
+      questions,
     };
   },
 });
@@ -55,8 +51,13 @@ export default defineComponent({
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+
+  width: 100%;
+  max-width: 720px;
+  margin: 0px auto;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 </style>

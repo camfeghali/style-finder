@@ -2,6 +2,7 @@
   <question-container v-for="question in questions" :key="question">
     <question-header :description="question" />
   </question-container>
+  <router-view></router-view>
 </template>
 
 <script>

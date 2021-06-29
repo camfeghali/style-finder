@@ -1,10 +1,15 @@
 <template>
   <div class="question-header">
-    <slot></slot>
+    <slot name="question"></slot>
   </div>
+  <slot></slot>
 </template>
 
-<script></script>
+<script>
+export default {
+  components: {},
+};
+</script>
 
 <style scoped>
 .question-header {

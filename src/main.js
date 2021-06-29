@@ -15,16 +15,7 @@ import "primeflex/primeflex.css";
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [
-    {
-      path: "/home",
-      component: Home,
-    },
-    {
-      path: "/error",
-      component: ErrorPage,
-    },
-  ],
+  routes: [],
 });
 const app = createApp(App);
 

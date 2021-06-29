@@ -1,32 +1,111 @@
 <template>
-  <question-container v-for="question in questions" :key="question">
-    <question-header :description="question" />
-  </question-container>
-  <router-view></router-view>
+  <BaseQuestion>
+    <template #question>
+      <QuestionHeader
+        :questionId="activeQuestion.id"
+        :questionNumber="activeQuestion.questionNumber"
+        :description="activeQuestion.description"
+      />
+    </template>
+    <component
+      :is="activeAnswerType"
+      @handle-change="handleChange"
+      :question="activeQuestion"
+    ></component>
+  </BaseQuestion>
+  <TheNavigation @change-question="changeQuestion"> </TheNavigation>
 </template>
 
 <script>
-import { defineComponent } from "@vue/runtime-core";
-import QuestionContainer from "./components/QuestionContainer.vue";
+import BaseQuestion from "./components/BaseQuestion.vue";
 import QuestionHeader from "./components/QuestionHeader.vue";
+import TheNavigation from "./components/TheNavigation.vue";
+import TextAnswer from "./components/answers/TextAnswer.vue";
+import NumberAnswer from "./components/answers/NumberAnswer.vue";
 
-export default defineComponent({
+export default {
   components: {
-    "question-header": QuestionHeader,
-    "question-container": QuestionContainer,
+    QuestionHeader,
+    BaseQuestion,
+    TheNavigation,
+    TextAnswer,
+    NumberAnswer,
   },
-  setup() {
-    const questions = [
-      "What is the reason for redesigning your space ?",
-      "How do you want to use your home office ?",
-      "Which room would you like to get designed ?",
-    ];
-
+  data() {
     return {
-      questions,
+      selectedComponent: "the-navigation",
+      questions: [
+        {
+          id: 1,
+          questionNumber: 1,
+          description: "What is the reason for redesigning your space ?",
+          answerType: "text",
+          answer: "test",
+          answers: {},
+        },
+        {
+          id: 2,
+          questionNumber: 2,
+          description: "How do you want to use your home office ?",
+          answerType: "number",
+          answer: 12,
+          answers: {},
+        },
+        {
+          id: 3,
+          questionNumber: 3,
+          description: "Which room would you like to get designed ?",
+          answerType: "text",
+          answer: null,
+          answers: {},
+        },
+      ],
+      activeQuestionIndex: 0,
     };
   },
-});
+  computed: {
+    activeQuestion() {
+      return this.questions[this.activeQuestionIndex];
+    },
+    activeAnswerType() {
+      return this.outputAnswerComponent(
+        this.questions[this.activeQuestionIndex].answerType
+      );
+    },
+  },
+  methods: {
+    handleChange(payload) {
+      this.questions.map((question) => {
+        if (question.id === payload.id) {
+          console.log("here: ", payload.value);
+          question["answer"] = payload.value;
+          return question;
+        } else {
+          return question;
+        }
+      });
+      console.log("this.questions: ", this.questions);
+    },
+    changeQuestion(increment) {
+      if (
+        this.activeQuestionIndex + increment < this.questions.length &&
+        this.activeQuestionIndex + increment >= 0
+      ) {
+        this.activeQuestionIndex += increment;
+      }
+    },
+    outputAnswerComponent(type) {
+      switch (type) {
+        case "text":
+          return "TextAnswer";
+        case "number":
+          return "NumberAnswer";
+        default:
+          return "TextAnswer";
+      }
+    },
+  },
+};
 // export default {
 //   data() {
 //     return {

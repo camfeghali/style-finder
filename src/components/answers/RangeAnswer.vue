@@ -15,6 +15,7 @@
         :key="question.id"
         :min="question.min"
         :max="question.max"
+        :range="true"
         @slideend="handleChange"
       />
     </div>
@@ -30,7 +31,7 @@ export default {
   emits: ["handle-change"],
   data() {
     return {
-      value: this.question.answer,
+      value: [this.question.min, this.question.max],
     };
   },
   methods: {

@@ -23,6 +23,7 @@ import TheNavigation from "./components/TheNavigation.vue";
 import TextAnswer from "./components/answers/TextAnswer.vue";
 import CurrencyAnswer from "./components/answers/CurrencyAnswer.vue";
 import SliderAnswer from "./components/answers/SliderAnswer.vue";
+import RangeAnswer from "./components/answers/RangeAnswer.vue";
 
 export default {
   components: {
@@ -32,26 +33,19 @@ export default {
     TextAnswer,
     CurrencyAnswer,
     SliderAnswer,
+    RangeAnswer,
   },
   data() {
     return {
       selectedComponent: "the-navigation",
       questions: [
         {
-          id: 3,
-          questionNumber: 3,
-          description: "Which room would you like to get designed ?",
-          answerType: "slider",
-          answer: null,
-          answers: {},
-        },
-        {
           id: 1,
           questionNumber: 1,
           description: "What is the reason for redesigning your space ?",
           answerType: "text",
           answer: "test",
-          answers: {},
+          answers: [],
         },
         {
           id: 2,
@@ -59,7 +53,27 @@ export default {
           description: "How do you want to use your home office ?",
           answerType: "currency",
           answer: 12,
-          answers: {},
+          answers: [],
+        },
+        {
+          id: 3,
+          questionNumber: 3,
+          description: "Which room would you like to get designed ?",
+          answerType: "slider",
+          answer: null,
+          answers: [],
+          min: 40,
+          max: 200,
+        },
+        {
+          id: 4,
+          questionNumber: 4,
+          description: "What is your budget ?",
+          answerType: "range",
+          answer: null,
+          answers: [],
+          min: 40,
+          max: 200,
         },
       ],
       activeQuestionIndex: 0,
@@ -103,6 +117,8 @@ export default {
           return "CurrencyAnswer";
         case "slider":
           return "SliderAnswer";
+        case "range":
+          return "RangeAnswer";
         default:
           return "TextAnswer";
       }

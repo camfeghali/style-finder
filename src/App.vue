@@ -25,6 +25,7 @@ import CurrencyAnswer from "./components/answers/CurrencyAnswer.vue";
 import SliderAnswer from "./components/answers/SliderAnswer.vue";
 import RangeAnswer from "./components/answers/RangeAnswer.vue";
 import SingleSelectAnswer from "./components/answers/SingleSelectAnswer.vue";
+import SingleSelectImage from "./components/answers/SingleSelectImage.vue";
 
 export default {
   components: {
@@ -36,22 +37,26 @@ export default {
     SliderAnswer,
     RangeAnswer,
     SingleSelectAnswer,
+    SingleSelectImage,
   },
   data() {
     return {
       selectedComponent: "the-navigation",
       questions: [
         {
-          id: 5,
-          questionNumber: 5,
+          id: 6,
+          questionNumber: 6,
           description: "What is the reason for redesigning your space ?",
-          answerType: "singleSelect",
-          answer: null,
+          answerType: "singleSelectImage",
+          answer: "test",
           answers: [
             { id: 1, name: "Accounting", key: "A" },
             { id: 2, name: "Marketing", key: "M" },
             { id: 3, name: "Production", key: "P" },
             { id: 4, name: "Research", key: "R" },
+            { id: 5, name: "Something", key: "S" },
+            { id: 6, name: "Else", key: "E" },
+            { id: 7, name: "Idk", key: "I" },
           ],
         },
         {
@@ -89,6 +94,19 @@ export default {
           answers: [],
           min: 40,
           max: 200,
+        },
+        {
+          id: 5,
+          questionNumber: 5,
+          description: "What is the reason for redesigning your space ?",
+          answerType: "singleSelect",
+          answer: null,
+          answers: [
+            { id: 1, name: "Accounting", key: "A" },
+            { id: 2, name: "Marketing", key: "M" },
+            { id: 3, name: "Production", key: "P" },
+            { id: 4, name: "Research", key: "R" },
+          ],
         },
       ],
       activeQuestionIndex: 0,
@@ -136,6 +154,8 @@ export default {
           return "RangeAnswer";
         case "singleSelect":
           return "SingleSelectAnswer";
+        case "singleSelectImage":
+          return "SingleSelectImage";
         default:
           return "TextAnswer";
       }

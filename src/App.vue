@@ -24,6 +24,7 @@ import TextAnswer from "./components/answers/TextAnswer.vue";
 import CurrencyAnswer from "./components/answers/CurrencyAnswer.vue";
 import SliderAnswer from "./components/answers/SliderAnswer.vue";
 import RangeAnswer from "./components/answers/RangeAnswer.vue";
+import SingleSelectAnswer from "./components/answers/SingleSelectAnswer.vue";
 
 export default {
   components: {
@@ -34,11 +35,25 @@ export default {
     CurrencyAnswer,
     SliderAnswer,
     RangeAnswer,
+    SingleSelectAnswer,
   },
   data() {
     return {
       selectedComponent: "the-navigation",
       questions: [
+        {
+          id: 5,
+          questionNumber: 5,
+          description: "What is the reason for redesigning your space ?",
+          answerType: "singleSelect",
+          answer: null,
+          answers: [
+            { id: 1, name: "Accounting", key: "A" },
+            { id: 2, name: "Marketing", key: "M" },
+            { id: 3, name: "Production", key: "P" },
+            { id: 4, name: "Research", key: "R" },
+          ],
+        },
         {
           id: 1,
           questionNumber: 1,
@@ -119,6 +134,8 @@ export default {
           return "SliderAnswer";
         case "range":
           return "RangeAnswer";
+        case "singleSelect":
+          return "SingleSelectAnswer";
         default:
           return "TextAnswer";
       }

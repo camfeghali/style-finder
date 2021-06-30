@@ -1,14 +1,6 @@
 <template>
   <div class="p-input-filled">
     <div class="p-field p-col-12 p-md-3">
-      <!-- <Slider
-        @input="handleChange"
-        v-model="value"
-        class="p-inputnumber-lg"
-        mode="currency"
-        currency="EUR"
-        :key="question.id"
-      /> -->
       <h5>Value: {{ value }}</h5>
       <Slider
         v-model="value"

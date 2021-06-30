@@ -21,7 +21,8 @@ import BaseQuestion from "./components/BaseQuestion.vue";
 import QuestionHeader from "./components/QuestionHeader.vue";
 import TheNavigation from "./components/TheNavigation.vue";
 import TextAnswer from "./components/answers/TextAnswer.vue";
-import NumberAnswer from "./components/answers/NumberAnswer.vue";
+import CurrencyAnswer from "./components/answers/CurrencyAnswer.vue";
+import SliderAnswer from "./components/answers/SliderAnswer.vue";
 
 export default {
   components: {
@@ -29,12 +30,21 @@ export default {
     BaseQuestion,
     TheNavigation,
     TextAnswer,
-    NumberAnswer,
+    CurrencyAnswer,
+    SliderAnswer,
   },
   data() {
     return {
       selectedComponent: "the-navigation",
       questions: [
+        {
+          id: 3,
+          questionNumber: 3,
+          description: "Which room would you like to get designed ?",
+          answerType: "slider",
+          answer: null,
+          answers: {},
+        },
         {
           id: 1,
           questionNumber: 1,
@@ -47,16 +57,8 @@ export default {
           id: 2,
           questionNumber: 2,
           description: "How do you want to use your home office ?",
-          answerType: "number",
+          answerType: "currency",
           answer: 12,
-          answers: {},
-        },
-        {
-          id: 3,
-          questionNumber: 3,
-          description: "Which room would you like to get designed ?",
-          answerType: "text",
-          answer: null,
           answers: {},
         },
       ],
@@ -77,7 +79,6 @@ export default {
     handleChange(payload) {
       this.questions.map((question) => {
         if (question.id === payload.id) {
-          console.log("here: ", payload.value);
           question["answer"] = payload.value;
           return question;
         } else {
@@ -98,8 +99,10 @@ export default {
       switch (type) {
         case "text":
           return "TextAnswer";
-        case "number":
-          return "NumberAnswer";
+        case "currency":
+          return "CurrencyAnswer";
+        case "slider":
+          return "SliderAnswer";
         default:
           return "TextAnswer";
       }

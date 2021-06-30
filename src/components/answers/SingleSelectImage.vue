@@ -10,7 +10,10 @@
             />
           </div>
           <div class="footer-container">
-            {{ option.name }}
+            <div class="option-key-container">
+              <p>{{ option.id }}</p>
+            </div>
+            <p>{{ option.name }}</p>
           </div>
         </div>
       </div>
@@ -73,7 +76,7 @@ export default {
 .answer-card:hover {
   cursor: pointer;
   background-color: rgba(69, 122, 83, 0.3);
-  border: 1.2px solid rgb(69, 122, 83);
+  box-shadow: inset 0px 0px 0px 2px rgb(69, 122, 83);
 }
 
 .card-content-container {
@@ -94,7 +97,6 @@ export default {
   min-height: 40px;
   outline: 0px;
   padding: 4px;
-  /* cursor: pointer; */
 }
 
 .image-container {
@@ -117,10 +119,32 @@ export default {
 
 .footer-container {
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
+  justify-content: flex-start;
   min-height: 32px;
-  -webkit-box-pack: center;
+}
+
+.footer-container p {
+  margin: 0;
+  max-width: 100%;
+  font-weight: unset;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgb(69, 122, 83);
+}
+
+.option-key-container {
+  height: 24px;
+  width: 24px;
+  display: flex;
   justify-content: center;
+  align-items: center;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 2px;
+  border-color: rgba(69, 122, 83, 0.6);
+  background-color: rgb(255, 255, 255);
 }
 </style>

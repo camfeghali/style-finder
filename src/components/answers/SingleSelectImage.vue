@@ -70,6 +70,12 @@ export default {
   padding: 4px;
 }
 
+.answer-card:hover {
+  cursor: pointer;
+  background-color: rgba(69, 122, 83, 0.3);
+  border: 1.2px solid rgb(69, 122, 83);
+}
+
 .card-content-container {
   min-height: 100%;
 }
@@ -88,8 +94,7 @@ export default {
   min-height: 40px;
   outline: 0px;
   padding: 4px;
-
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .image-container {

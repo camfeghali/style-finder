@@ -1,7 +1,12 @@
 <template>
-  <!-- <div v-for="option of options" :key="option.id"></div> -->
   <div class="answers-container">
-    <div class="answer-card" v-for="option of options" :key="option.id">
+    <div
+      class="answer-card"
+      :class="{ selected: option.id === selectedOption }"
+      @click="handleChange(option.id)"
+      v-for="option of options"
+      :key="option.id"
+    >
       <div class="card-content-wrapper">
         <div class="card-content">
           <div class="image-container">
@@ -10,7 +15,10 @@
             />
           </div>
           <div class="footer-container">
-            <div class="option-key-container">
+            <div
+              :class="{ selected: option.id === selectedOption }"
+              class="option-key-container"
+            >
               <p>{{ option.id }}</p>
             </div>
             <p>{{ option.name }}</p>
@@ -23,7 +31,6 @@
 
 <script>
 export default {
-  components: {},
   props: ["question"],
   emits: ["handle-change"],
   data() {
@@ -34,11 +41,14 @@ export default {
     };
   },
   methods: {
-    handleChange() {
+    handleChange(optionId) {
+      this.selectedOption = this.options.find(
+        (option) => option.id === optionId
+      ).id;
       console.log(this.selectedOption);
       this.$emit("handle-change", {
         id: this.question.id,
-        value: this.selectedOption.id,
+        value: this.selectedOption,
       });
     },
   },
@@ -65,12 +75,17 @@ export default {
 .answer-card {
   margin-bottom: 8px;
   margin-right: 8px;
-  width: calc(25% - 8px);
+  width: calc(50% - 8px);
   border: 1px solid rgb(69, 122, 83);
   background-color: rgba(69, 122, 83, 0.1);
   outline: none;
   border-radius: 4px;
   padding: 4px;
+}
+
+.answer-card.selected {
+  background-color: rgba(69, 122, 83, 0.3);
+  box-shadow: inset 0px 0px 0px 2px rgb(69, 122, 83);
 }
 
 .answer-card:hover {
@@ -146,5 +161,24 @@ export default {
   border-radius: 2px;
   border-color: rgba(69, 122, 83, 0.6);
   background-color: rgb(255, 255, 255);
+}
+.option-key-container.selected {
+  background-color: rgb(69, 122, 83);
+}
+
+.option-key-container.selected p {
+  color: rgb(255, 255, 255);
+}
+
+@media (min-width: 481px) {
+  .answer-card {
+    width: calc(33% - 8px);
+  }
+}
+
+@media (min-width: 769px) {
+  .answer-card {
+    width: calc(25% - 8px);
+  }
 }
 </style>

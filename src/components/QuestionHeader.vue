@@ -1,18 +1,18 @@
 <template>
   <div class="p-col-1">
     <div class="question-index p-d-inline-flex p-ai-left p-ai-center">
-      <h4 class="question-number">{{ questionNumber }}</h4>
+      <h4 class="question-number">{{ question.questionNumber }}</h4>
       <i class="pi pi-arrow-right" style="font-size: 0.5rem;"></i>
     </div>
   </div>
   <div class="p-col-11">
-    <h3>{{ description }}</h3>
+    <h3>{{ question.description }}</h3>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["questionNumber", "description"],
+  props: ["question"],
   data() {
     return {};
   },

@@ -5,11 +5,7 @@
   <div class="content-wrapper">
     <BaseQuestion>
       <template #question>
-        <QuestionHeader
-          :questionId="activeQuestion.id"
-          :questionNumber="activeQuestion.questionNumber"
-          :description="activeQuestion.description"
-        />
+        <QuestionHeader :question="activeQuestion" />
       </template>
       <component
         :is="activeAnswerType"

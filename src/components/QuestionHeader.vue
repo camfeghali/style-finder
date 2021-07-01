@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="p-col-11">
-    <h3>{{ question.description }}</h3>
+    <p class="question-description">{{ question.description }}</p>
   </div>
 </template>
 
@@ -32,7 +32,18 @@ export default {
   margin: 0.15rem 0.25rem 0rem 0.5rem;
 }
 
+.question-description {
+  font-size: 20px;
+  margin: 0;
+}
+
 h3 {
   margin: 0;
+}
+
+@media (min-width: 481px) {
+  .question-description {
+    font-size: 24px;
+  }
 }
 </style>

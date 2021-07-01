@@ -19,7 +19,7 @@ export default {
 
   methods: {
     changeQuestion(increment) {
-      this.$emit("handle-error", increment);
+      this.$emit("handle-error");
       this.$emit("change-question", increment);
     },
   },

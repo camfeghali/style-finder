@@ -1,5 +1,7 @@
 <template>
-  <ProgressBar :value="progress" :showValue="false" />
+  <header>
+    <ProgressBar :value="progress" :showValue="false" />
+  </header>
   <div class="content-wrapper">
     <BaseQuestion>
       <template #question>
@@ -16,8 +18,9 @@
       ></component>
     </BaseQuestion>
   </div>
-
-  <TheNavigation @change-question="changeQuestion"> </TheNavigation>
+  <footer>
+    <TheNavigation @change-question="changeQuestion"> </TheNavigation>
+  </footer>
 </template>
 
 <script>
@@ -119,7 +122,7 @@ export default {
   },
   computed: {
     progress() {
-      return (this.activeQuestionIndex / this.questions.length) * 100;
+      return (this.activeQuestionIndex / (this.questions.length - 1)) * 100;
     },
     activeQuestion() {
       return this.questions[this.activeQuestionIndex];
@@ -194,21 +197,69 @@ export default {
 body {
   margin: 0;
   width: 100%;
+  height: 100%;
+  position: absolute;
 }
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  min-height: 100%;
 }
 
 .content-wrapper {
+  position: absolute;
   width: 100%;
   max-width: 720px;
   margin: 0px auto;
   margin-top: 60px;
-
   padding-left: 0px;
   padding-right: 0px;
+  top: -30px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  overflow: auto;
+  padding: 1em;
+}
+
+header {
+  top: 0;
+  width: 100%;
+  height: 20px; /* Height of the footer */
+  background: rgba(255, 255, 255, 0.1);
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+  position: absolute;
+  bottom: 0px;
+  height: 35px;
+  left: 0px;
+  right: 0px;
+  overflow: hidden;
+}
+footer {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 80px;
+  bottom: 0;
+  left: 0px;
+  right: 0px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px;
+  margin-bottom: 0px;
+  display: flex;
+  align-items: flex-start;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+@media (min-width: 481px) {
+  footer {
+    padding: 24px;
+  }
 }
 </style>

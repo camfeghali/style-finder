@@ -1,12 +1,12 @@
 <template>
   <div class="p-col-1">
     <div class="question-index p-d-inline-flex p-ai-left p-ai-center">
-      <h3 class="question-number">{{ questionNumber }}</h3>
+      <h4 class="question-number">{{ questionNumber }}</h4>
       <i class="pi pi-arrow-right" style="font-size: 0.5rem;"></i>
     </div>
   </div>
   <div class="p-col-11">
-    <h2>{{ description }}</h2>
+    <h3>{{ description }}</h3>
   </div>
 </template>
 
@@ -29,10 +29,10 @@ export default {
   font-weight: bold;
 }
 .question-number {
-  margin: 0.15rem 0.5rem 0rem 0.5rem;
+  margin: 0.15rem 0.25rem 0rem 0.5rem;
 }
 
-h2 {
+h3 {
   margin: 0;
 }
 </style>

@@ -1,6 +1,11 @@
 <template>
   <Button @click="changeQuestion(-1)" icon="pi pi-angle-up" iconPos="right" />
-  <Button @click="changeQuestion(1)" icon="pi pi-angle-down" iconPos="right" />
+  <Button
+    @click="changeQuestion(1)"
+    icon="pi pi-angle-down"
+    iconPos="right"
+    class="down-button"
+  />
 </template>
 
 <script>
@@ -19,3 +24,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.down-button {
+  margin-left: 0.35em;
+}
+</style>

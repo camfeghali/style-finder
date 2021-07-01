@@ -3,7 +3,7 @@
     <ProgressBar :value="progress" :showValue="false" />
   </header>
   <div class="content-wrapper">
-    <BaseQuestion>
+    <BaseQuestion :question="activeQuestion" :error="error">
       <template #question>
         <QuestionHeader :question="activeQuestion" />
       </template>
@@ -16,7 +16,11 @@
     </BaseQuestion>
   </div>
   <footer>
-    <TheNavigation @change-question="changeQuestion"> </TheNavigation>
+    <TheNavigation
+      @change-question="changeQuestion"
+      @handle-error="handleError"
+    >
+    </TheNavigation>
   </footer>
 </template>
 
@@ -47,13 +51,15 @@ export default {
   },
   data() {
     return {
+      activeQuestionIndex: 0,
+      error: false,
       questions: [
         {
           id: 1,
           questionNumber: 1,
           description: "What is the reason for redesigning your space ?",
           answerType: "text",
-          answer: "test",
+          answer: null,
           answers: [],
         },
         {
@@ -61,7 +67,7 @@ export default {
           questionNumber: 6,
           description: "What is the reason for redesigning your space ?",
           answerType: "singleSelectImage",
-          answer: null,
+          answer: 1,
           answers: [
             { id: 1, name: "Accounting", key: "A" },
             { id: 2, name: "Marketing", key: "M" },
@@ -114,7 +120,6 @@ export default {
           ],
         },
       ],
-      activeQuestionIndex: 0,
     };
   },
   computed: {
@@ -140,14 +145,22 @@ export default {
           return question;
         }
       });
-      console.log("this.questions: ", this.questions);
     },
     changeQuestion(increment) {
-      if (
-        this.activeQuestionIndex + increment < this.questions.length &&
-        this.activeQuestionIndex + increment >= 0
-      ) {
-        this.activeQuestionIndex += increment;
+      if (!this.error) {
+        if (
+          this.activeQuestionIndex + increment < this.questions.length &&
+          this.activeQuestionIndex + increment >= 0
+        ) {
+          this.activeQuestionIndex += increment;
+        }
+      }
+    },
+    handleError() {
+      if (!this.questions[this.activeQuestionIndex].answer) {
+        this.error = true;
+      } else {
+        this.error = false;
       }
     },
     outputAnswerComponent(type) {

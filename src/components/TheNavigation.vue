@@ -15,10 +15,11 @@ export default {
   components: {
     Button,
   },
-  emits: ["change-question"],
+  emits: ["change-question", "handle-error"],
 
   methods: {
     changeQuestion(increment) {
+      this.$emit("handle-error", increment);
       this.$emit("change-question", increment);
     },
   },

@@ -52,9 +52,11 @@ export default {
     },
   },
   created() {
-    this.selectedOption = this.options.find(
-      (option) => option.id === this.question.answer
-    ).id;
+    this.question.answer
+      ? (this.selectedOption = this.options.find((option) => {
+          return option.id === this.question.answer;
+        }).id)
+      : (this.selectedOption = this.options[0].id);
   },
 };
 </script>

@@ -63,7 +63,8 @@ export default {
 <style scoped>
 .answers-container {
   display: inline-flex;
-  margin: 0px -8px -8px 0px;
+  /* margin: 32px -8px -8px 0px; */
+  margin-top: 32px;
   list-style: none;
   padding: 0px;
   flex-flow: row wrap;

@@ -215,7 +215,7 @@ body {
   width: 100%;
   max-width: 720px;
   margin: 0px auto;
-  margin-top: 60px;
+  margin-top: 80px;
   padding-left: 0px;
   padding-right: 0px;
   top: -30px;
@@ -261,6 +261,10 @@ footer {
 @media (min-width: 481px) {
   footer {
     padding: 24px;
+  }
+
+  .content-wrapper {
+    margin-top: 140px;
   }
 }
 </style>

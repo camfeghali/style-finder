@@ -63,7 +63,7 @@ export default {
 .answers-container {
   display: inline-flex;
   /* margin: 32px -8px -8px 0px; */
-  margin-top: 32px;
+  margin-top: 24px;
   list-style: none;
   padding: 0px;
   flex-flow: row wrap;

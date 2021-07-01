@@ -35,9 +35,8 @@ export default {
   emits: ["handle-change"],
   data() {
     return {
-      value: this.question.answer,
       options: this.question.answers,
-      selectedOption: null,
+      selectedOption: this.question.answer,
     };
   },
   methods: {
@@ -45,17 +44,17 @@ export default {
       this.selectedOption = this.options.find(
         (option) => option.id === optionId
       ).id;
-      console.log(this.selectedOption);
       this.$emit("handle-change", {
         id: this.question.id,
         value: this.selectedOption,
       });
+      this.$emit("change-question", 1);
     },
   },
   created() {
     this.selectedOption = this.options.find(
       (option) => option.id === this.question.answer
-    );
+    ).id;
   },
 };
 </script>

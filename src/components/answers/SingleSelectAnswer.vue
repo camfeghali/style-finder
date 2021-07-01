@@ -25,7 +25,7 @@ import RadioButton from "primevue/radiobutton";
 export default {
   components: { RadioButton },
   props: ["question"],
-  emits: ["handle-change"],
+  emits: ["handle-change", "change-question"],
   data() {
     return {
       value: this.question.answer,
@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     handleChange() {
-      console.log(this.selectedOption);
+      this.$emit("change-question", 1);
       this.$emit("handle-change", {
         id: this.question.id,
         value: this.selectedOption.id,

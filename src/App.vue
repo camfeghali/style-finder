@@ -14,6 +14,7 @@
       <component
         :is="activeAnswerType"
         @handle-change="handleChange"
+        @change-question="changeQuestion"
         :question="activeQuestion"
       ></component>
     </BaseQuestion>
@@ -52,11 +53,19 @@ export default {
     return {
       questions: [
         {
+          id: 1,
+          questionNumber: 1,
+          description: "What is the reason for redesigning your space ?",
+          answerType: "text",
+          answer: "test",
+          answers: [],
+        },
+        {
           id: 6,
           questionNumber: 6,
           description: "What is the reason for redesigning your space ?",
           answerType: "singleSelectImage",
-          answer: "test",
+          answer: null,
           answers: [
             { id: 1, name: "Accounting", key: "A" },
             { id: 2, name: "Marketing", key: "M" },
@@ -66,14 +75,6 @@ export default {
             { id: 6, name: "Else", key: "E" },
             { id: 7, name: "Idk", key: "I" },
           ],
-        },
-        {
-          id: 1,
-          questionNumber: 1,
-          description: "What is the reason for redesigning your space ?",
-          answerType: "text",
-          answer: "test",
-          answers: [],
         },
         {
           id: 2,

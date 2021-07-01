@@ -1,13 +1,15 @@
 <template>
   <div class="p-input-filled">
-    <InputText
-      @input="handleChange"
-      v-model.trim="value"
-      type="text"
-      class="p-inputText-lg"
-      placeholder="Text"
-      :key="question.id"
-    />
+    <div class="p-field p-col-12 p-md-3">
+      <InputText
+        @input="handleChange"
+        v-model.trim="value"
+        type="text"
+        class="p-inputText-lg"
+        placeholder="Text"
+        :key="question.id"
+      />
+    </div>
   </div>
 </template>
 

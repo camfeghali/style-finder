@@ -1,18 +1,22 @@
 <template>
-  <BaseQuestion>
-    <template #question>
-      <QuestionHeader
-        :questionId="activeQuestion.id"
-        :questionNumber="activeQuestion.questionNumber"
-        :description="activeQuestion.description"
-      />
-    </template>
-    <component
-      :is="activeAnswerType"
-      @handle-change="handleChange"
-      :question="activeQuestion"
-    ></component>
-  </BaseQuestion>
+  <ProgressBar :value="progress" :showValue="false" />
+  <div class="content-wrapper">
+    <BaseQuestion>
+      <template #question>
+        <QuestionHeader
+          :questionId="activeQuestion.id"
+          :questionNumber="activeQuestion.questionNumber"
+          :description="activeQuestion.description"
+        />
+      </template>
+      <component
+        :is="activeAnswerType"
+        @handle-change="handleChange"
+        :question="activeQuestion"
+      ></component>
+    </BaseQuestion>
+  </div>
+
   <TheNavigation @change-question="changeQuestion"> </TheNavigation>
 </template>
 
@@ -26,6 +30,7 @@ import SliderAnswer from "./components/answers/SliderAnswer.vue";
 import RangeAnswer from "./components/answers/RangeAnswer.vue";
 import SingleSelectAnswer from "./components/answers/SingleSelectAnswer.vue";
 import SingleSelectImage from "./components/answers/SingleSelectImage.vue";
+import ProgressBar from "primevue/progressbar";
 
 export default {
   components: {
@@ -38,10 +43,10 @@ export default {
     RangeAnswer,
     SingleSelectAnswer,
     SingleSelectImage,
+    ProgressBar,
   },
   data() {
     return {
-      selectedComponent: "the-navigation",
       questions: [
         {
           id: 6,
@@ -113,6 +118,9 @@ export default {
     };
   },
   computed: {
+    progress() {
+      return (this.activeQuestionIndex / this.questions.length) * 100;
+    },
     activeQuestion() {
       return this.questions[this.activeQuestionIndex];
     },
@@ -183,16 +191,23 @@ export default {
 </script>
 
 <style>
+body {
+  margin: 0;
+  width: 100%;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 60px;
+}
 
+.content-wrapper {
   width: 100%;
   max-width: 720px;
   margin: 0px auto;
+  margin-top: 60px;
+
   padding-left: 0px;
   padding-right: 0px;
 }

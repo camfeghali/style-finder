@@ -210,7 +210,6 @@ body {
   grid-template-areas:
     "header"
     "main";
-  /* "footer"; */
 }
 
 #app > header {
@@ -225,11 +224,13 @@ body {
   height: 100%;
   max-width: 720px;
   place-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .main-content {
-  display: grid;
-  grid-template-columns: 1fr;
+  max-height: 100%;
 }
 
 #footer {

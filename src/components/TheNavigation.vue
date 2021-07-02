@@ -30,4 +30,9 @@ export default {
 .down-button {
   margin-left: 0.35em;
 }
+
+button {
+  /* position: relative; */
+  /* top: 4.7em; */
+}
 </style>

@@ -183,32 +183,15 @@ export default {
     },
   },
 };
-// export default {
-//   data() {
-//     return {
-//       text: null,
-//     };
-//   },
-//   methods: {
-//     greet() {
-//       console.log("firing!");
-//       console.log("this.$toast", this.$toast);
-//       this.$toast.add({
-//         severity: "info",
-//         summary: "hello",
-//         detail: this.text,
-//       });
-//     },
-//   },
-// };
 </script>
 
 <style>
 body {
   margin: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
+  box-sizing: border-box;
+  /* width: 100%;
+  height: 100%; */
+  /* position: absolute; */
 }
 
 #app {
@@ -216,64 +199,46 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  min-height: 100%;
+  height: 100vh;
+
+  /* grid container settings */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
 }
 
-.content-wrapper {
-  position: absolute;
-  width: 100%;
-  max-width: 720px;
-  margin: 0px auto;
-  margin-top: 80px;
-  padding-left: 0px;
-  padding-right: 0px;
-  top: -30px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
+#app > header {
+  grid-area: header;
+}
+
+#app > .content-wrapper {
+  grid-area: main;
   overflow: auto;
-  padding: 1em;
+  padding: 15px 5px 10px 5px;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
-header {
-  top: 0;
-  width: 100%;
-  height: 20px; /* Height of the footer */
-  background: rgba(255, 255, 255, 0.1);
-  left: 0px;
-  right: 0px;
-  margin-bottom: 0px;
-  position: absolute;
-  bottom: 0px;
-  height: 35px;
-  left: 0px;
-  right: 0px;
-  overflow: hidden;
-}
-footer {
-  position: absolute;
-  overflow: hidden;
-  width: 100%;
-  height: 80px;
-  bottom: 0;
-  left: 0px;
-  right: 0px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 8px;
-  margin-bottom: 0px;
+#app > footer {
+  grid-area: footer;
   display: flex;
-  align-items: flex-start;
-  align-items: flex-end;
   justify-content: flex-end;
+  padding: 12px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.6;
 }
 
 @media (min-width: 481px) {
+  #app > .content-wrapper {
+    overflow: hidden;
+  }
   footer {
     padding: 24px;
-  }
-
-  .content-wrapper {
-    margin-top: 140px;
   }
 }
 </style>

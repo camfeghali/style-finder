@@ -7,19 +7,17 @@
     />
   </header>
   <div class="main">
-    <div class="main-content">
-      <BaseQuestion :question="activeQuestion" :error="error">
-        <template #question>
-          <QuestionHeader :question="activeQuestion" />
-        </template>
-        <component
-          :is="activeAnswerType"
-          @handle-change="handleChange"
-          @change-question="changeQuestion"
-          :question="activeQuestion"
-        ></component>
-      </BaseQuestion>
-    </div>
+    <BaseQuestion :question="activeQuestion" :error="error">
+      <template #question>
+        <QuestionHeader :question="activeQuestion" />
+      </template>
+      <component
+        :is="activeAnswerType"
+        @handle-change="handleChange"
+        @change-question="changeQuestion"
+        :question="activeQuestion"
+      ></component>
+    </BaseQuestion>
   </div>
   <div id="footer">
     <TheNavigation
@@ -59,6 +57,7 @@ export default {
     return {
       activeQuestionIndex: 0,
       error: false,
+      animateIn: true,
       questions: [
         {
           id: 1,
@@ -231,10 +230,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.main-content {
-  max-height: 100%;
 }
 
 #footer {

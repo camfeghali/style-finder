@@ -2,18 +2,20 @@
   <header>
     <ProgressBar :value="progress" :showValue="false" />
   </header>
-  <div class="content-wrapper">
-    <BaseQuestion :question="activeQuestion" :error="error">
-      <template #question>
-        <QuestionHeader :question="activeQuestion" />
-      </template>
-      <component
-        :is="activeAnswerType"
-        @handle-change="handleChange"
-        @change-question="changeQuestion"
-        :question="activeQuestion"
-      ></component>
-    </BaseQuestion>
+  <div class="main">
+    <div class="main-content">
+      <BaseQuestion :question="activeQuestion" :error="error">
+        <template #question>
+          <QuestionHeader :question="activeQuestion" />
+        </template>
+        <component
+          :is="activeAnswerType"
+          @handle-change="handleChange"
+          @change-question="changeQuestion"
+          :question="activeQuestion"
+        ></component>
+      </BaseQuestion>
+    </div>
   </div>
   <div id="footer">
     <TheNavigation
@@ -215,12 +217,19 @@ body {
   grid-area: header;
 }
 
-#app > .content-wrapper {
+#app > .main {
   grid-area: main;
   overflow: auto;
   padding: 15px 5px 10px 5px;
+  width: 100%;
+  height: 100%;
   max-width: 720px;
-  margin: 0 auto;
+  place-self: center;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 #footer {
@@ -234,7 +243,7 @@ body {
 }
 
 @media (min-width: 481px) {
-  #app > .content-wrapper {
+  #app > .main {
     overflow: hidden;
   }
   #footer {

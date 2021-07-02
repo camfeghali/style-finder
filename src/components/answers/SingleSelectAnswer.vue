@@ -1,6 +1,6 @@
 <template>
   <div class="p-input-filled">
-    <div class="p-field p-col-12 p-md-3">
+    <div class="p-field p-col-12 p-md-3 wrapper">
       <div
         v-for="option of options"
         :key="option.id"

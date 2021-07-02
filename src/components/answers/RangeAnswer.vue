@@ -1,6 +1,6 @@
 <template>
-  <div class="p-input-filled">
-    <div class="p-field p-col-12 p-md-3">
+  <div class="p-fluid p-grid p-formgrid wrapper">
+    <div class="p-field p-col-12">
       <!-- <Slider
         @input="handleChange"
         v-model="value"
@@ -46,3 +46,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.wrapper {
+  margin: 0 0.25rem;
+}
+</style>

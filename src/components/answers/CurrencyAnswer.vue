@@ -1,6 +1,7 @@
 <template>
-  <div class="p-input-filled">
-    <div class="p-field p-col-12 p-md-3">
+  <!-- <div class="p-input-filled"> -->
+  <div class="p-fluid p-grid p-formgrid">
+    <div class="p-field p-col-12">
       <InputNumber
         @input="handleChange"
         v-model="value"

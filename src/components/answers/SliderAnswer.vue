@@ -1,6 +1,6 @@
 <template>
-  <div class="p-input-filled">
-    <div class="p-field p-col-12 p-md-3">
+  <div class="p-fluid p-grid p-formgrid" style="margin: 0 0.25rem;">
+    <div class="p-field p-col-12">
       <h5>Value: {{ value }}</h5>
       <Slider
         v-model="value"

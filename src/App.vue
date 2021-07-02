@@ -15,13 +15,13 @@
       ></component>
     </BaseQuestion>
   </div>
-  <footer>
+  <div id="footer">
     <TheNavigation
       @change-question="changeQuestion"
       @handle-error="handleError"
     >
     </TheNavigation>
-  </footer>
+  </div>
 </template>
 
 <script>
@@ -204,11 +204,11 @@ body {
   /* grid container settings */
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr;
   grid-template-areas:
     "header"
-    "main"
-    "footer";
+    "main";
+  /* "footer"; */
 }
 
 #app > header {
@@ -223,22 +223,22 @@ body {
   margin: 0 auto;
 }
 
-#app > footer {
-  grid-area: footer;
+#footer {
   display: flex;
+  position: fixed;
   justify-content: flex-end;
   padding: 12px;
-  background-color: #ffffff;
-  border: 1px solid black;
-  opacity: 0.6;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 @media (min-width: 481px) {
   #app > .content-wrapper {
     overflow: hidden;
   }
-  footer {
-    padding: 24px;
+  #footer {
+    padding: 32px;
   }
 }
 </style>

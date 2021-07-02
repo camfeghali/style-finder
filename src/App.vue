@@ -1,6 +1,10 @@
 <template>
   <header>
-    <ProgressBar :value="progress" :showValue="false" />
+    <ProgressBar
+      :value="progress"
+      :showValue="false"
+      style="height: .5em; border-radius: 0px;"
+    />
   </header>
   <div class="main">
     <div class="main-content">
